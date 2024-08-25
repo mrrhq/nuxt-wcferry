@@ -31,6 +31,11 @@ export interface BotEventHandlerOptions<Request extends EventHandlerRequest = Ev
   when?: RegExp | boolean | ((msg: Message) => boolean | Promise<boolean>)
 }
 
+/**
+ * 定义收到消息时的指令
+ *
+ * 可以是任意消息、@消息、群消息、私聊消息
+ */
 export const defineBotEventHandler = (options: BotEventHandlerOptions) => {
   const nitroApp = useNitroApp()
   const { handler, hooks = ['ferry:message'], executeHandlerOnRequest, when = true } = options

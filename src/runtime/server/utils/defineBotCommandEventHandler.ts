@@ -13,6 +13,9 @@ export interface BotCommandEventHandlerOptions<Request extends EventHandlerReque
   handler: (payload: CommandHandlerPayload, event?: H3Event<Request>) => Response
 }
 
+/**
+ * 定义被 @ 时的命令
+ */
 export const defineBotCommandEventHandler = (options: BotCommandEventHandlerOptions) => {
   const { command, handler } = options
   const regex

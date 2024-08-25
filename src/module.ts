@@ -20,7 +20,9 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.nitro ??= {}
     nuxt.options.nitro.experimental ??= {}
     nuxt.options.nitro.experimental.tasks = true
-    logger.log(`${colors.blueBright('  ➜ NuxtFerry:')} ${colors.cyan(`${nuxt.options.devServer.url}/wcf-rust-callback`)}`)
+    if (import.meta.env.DEV) {
+      logger.log(`${colors.blueBright('  ➜ NuxtFerry:')} ${colors.cyan(`${nuxt.options.devServer.url}/wcf-rust-callback`)}`)
+    }
   },
 })
 
