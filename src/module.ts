@@ -1,19 +1,33 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, addServerScanDir, logger } from '@nuxt/kit'
+import { colors } from 'consola/utils'
 
-// Module options TypeScript interface definition
-export interface ModuleOptions {}
+export interface ModuleOptions {
+  baseURL: string
+}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'my-module',
-    configKey: 'myModule',
+    name: 'ferry',
+    configKey: 'ferry',
   },
-  // Default configuration options of the Nuxt module
-  defaults: {},
-  setup(_options, _nuxt) {
+  defaults: {
+    baseURL: 'http://127.0.0.1:10010',
+  },
+  setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
-
-    // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
-    addPlugin(resolver.resolve('./runtime/plugin'))
+    addServerScanDir(resolver.resolve('./runtime/server'))
+    nuxt.options.runtimeConfig['ferry'] = options
+    nuxt.options.nitro ??= {}
+    nuxt.options.nitro.experimental ??= {}
+    nuxt.options.nitro.experimental.tasks = true
+    logger.log(`${colors.blueBright('  ➜ NuxtFerry:')} ${colors.cyan(`${nuxt.options.devServer.url}/wcf-rust-callback`)}`)
   },
 })
+
+declare module 'nuxt/schema' {
+  interface RuntimeConfig {
+    ferry: {
+      baseURL: string
+    }
+  }
+}

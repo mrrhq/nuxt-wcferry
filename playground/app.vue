@@ -1,8 +1,5 @@
 <template>
   <div>
-    Nuxt module playground!
+    Nuxt Ferry playground!
   </div>
 </template>
-
-<script setup>
-</script>
