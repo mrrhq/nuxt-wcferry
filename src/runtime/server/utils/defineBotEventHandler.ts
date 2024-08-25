@@ -52,5 +52,8 @@ export const defineBotEventHandler = (options: BotEventHandlerOptions) => {
     if (executeHandlerOnRequest) {
       return handler(null, event)
     }
+    throw createError({
+      status: 404,
+    })
   })
 }

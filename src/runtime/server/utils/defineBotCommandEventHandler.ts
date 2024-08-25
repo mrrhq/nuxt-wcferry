@@ -10,14 +10,14 @@ export interface CommandHandlerPayload {
 
 export interface BotCommandEventHandlerOptions<Request extends EventHandlerRequest = EventHandlerRequest, Response = EventHandlerResponse> {
   command: string | RegExp
-  handler: (payload: CommandHandlerPayload | null, event?: H3Event<Request>) => Response
+  handler: (payload: CommandHandlerPayload, event?: H3Event<Request>) => Response
 }
 
 export const defineBotCommandEventHandler = (options: BotCommandEventHandlerOptions) => {
   const { command, handler } = options
   const regex
     = typeof command === 'string'
-      ? new RegExp(`@.*?\\s(${command})\\s(.*)`)
+      ? new RegExp(`@.*?\\s(${command})(?:\\s([\\S\\s]*))?`)
       : command
   return defineBotEventHandler({
     hooks: 'ferry:message:room:mention',

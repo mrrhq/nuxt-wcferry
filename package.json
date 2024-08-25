@@ -1,8 +1,8 @@
 {
-  "name": "my-module",
+  "name": "nuxt-ferry",
   "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "your-org/my-module",
+  "description": "适用于 Nuxt 的微信机器人框架",
+  "repository": "mrrhq/nuxt-ferry",
   "license": "MIT",
   "type": "module",
   "exports": {
