@@ -1,6 +1,6 @@
 {
   "name": "nuxt-ferry",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "适用于 Nuxt 的微信机器人框架",
   "repository": "https://github.com/mrrhq/nuxt-ferry",
   "license": "MIT",

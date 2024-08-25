@@ -1,23 +1,15 @@
-<!--
-Get your module up and running quickly.
-
-Find and replace all on all files (CMD+SHIFT+F):
-- Name: My Module
-- Package name: nuxt-ferry
-- Description: 适用于 Nuxt 的微信机器人框架
--->
-
-# My Module
+# Nuxt Ferry
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![JSDocs][jsdocs-src]][jsdocs-href]
 [![License][license-src]][license-href]
-[![Nuxt][nuxt-src]][nuxt-href]
 
 适用于 Nuxt 的微信机器人框架，使用如下开源项目强力驱动：
 
 - [🤖 wcf-client-rust](https://github.com/lich0821/wcf-client-rust)
-- [⚙️ wechaty-puppet-ferry](https://github.com/mrrhq/wechaty-puppet-ferry)
+- [⚙️ nuxt-ferry](https://github.com/mrrhq/nuxt-ferry)
 - [🦾 Wechaty](https://wechaty.js.org/)
 
 ## Features
@@ -31,17 +23,63 @@ Find and replace all on all files (CMD+SHIFT+F):
 
 ## Quick Setup
 
-Install the module to your Nuxt application with one command:
+Install:
 
 ```bash
 pnpx nuxi module add nuxt-ferry
 ```
 
-```ts
+Command:
 
+```ts
+// server/routes/*.ts
+/**
+ * 在群里说：@机器人 ping
+ * 机器人回复：pong
+ */
+export default defineBotCommandEventHandler({
+  command: "ping",
+  handler({ message }) {
+    message.say("pong");
+  },
+});
+```
+Message:
+
+```ts
+// server/routes/*.ts
+/**
+ * 私聊机器人
+ * 机器人说：hi
+ */
+export default defineBotEventHandler({
+  hooks: "ferry:message:contact",
+  handler({ message }) {
+    message.say("hi!");
+  },
+});
 ```
 
-That's it! You can now use My Module in your Nuxt app ✨
+Tasks:
+
+```ts
+// server/tasks/*.ts
+/**
+ * 每晚 11 点对自己说 hi!
+ */
+export default defineCronTask({
+  pattern: "0 23 * * *",
+  run({ message }) {
+    useBot().say('hi!')
+  },
+});
+```
+
+That's it! You can now use Nuxt Ferry in your Nuxt app ✨
+
+## Funding
+
+<img src="./FUNDING.jpg" width="200" />
 
 ## Contribution
 
@@ -74,13 +112,19 @@ npm run release
 
 </details>
 
+## License
+
+[MIT](./LICENSE) License © 2024-PRESENT [mrrhq](https://github.com/mrrhqmao)
+
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-ferry/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-ferry?style=flat&colorA=080f12&colorB=1fa669
 [npm-version-href]: https://npmjs.com/package/nuxt-ferry
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-ferry.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-ferry?style=flat&colorA=080f12&colorB=1fa669
 [npm-downloads-href]: https://npmjs.com/package/nuxt-ferry
-[license-src]: https://img.shields.io/npm/l/nuxt-ferry.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/nuxt-ferry
-[nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
-[nuxt-href]: https://nuxt.com
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/nuxt-ferry?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=nuxt-ferry
+[license-src]: https://img.shields.io/github/license/mrrhq/nuxt-ferry.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/mrrhq/nuxt-ferry/blob/main/LICENSE
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
+[jsdocs-href]: https://www.jsdocs.io/package/nuxt-ferry
