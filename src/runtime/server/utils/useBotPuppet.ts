@@ -1,12 +1,12 @@
-import { PuppetFerry } from 'wechaty-puppet-ferry'
+import { PuppetWcferry } from 'wechaty-puppet-wcferry'
 import { useBotAgent } from './useBotAgent'
 
-let puppet: PuppetFerry
+let puppet: PuppetWcferry
 
 export function useBotPuppet() {
   const agent = useBotAgent()
   if (!puppet) {
-    puppet = new PuppetFerry({ agent })
+    puppet = new PuppetWcferry({ agent })
   }
 
   return puppet

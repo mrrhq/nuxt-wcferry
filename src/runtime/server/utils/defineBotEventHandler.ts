@@ -21,7 +21,7 @@ export interface BotEventHandlerOptions<Request extends EventHandlerRequest = Ev
 
   /**
    * 要在哪个 hook 中执行，默认为收到消息就执行
-   * @default 'ferry:message'
+   * @default 'wcferry:message'
    */
   hooks?: NitroRuntimeHookKeys[] | NitroRuntimeHookKeys
 
@@ -38,7 +38,7 @@ export interface BotEventHandlerOptions<Request extends EventHandlerRequest = Ev
  */
 export const defineBotEventHandler = (options: BotEventHandlerOptions) => {
   const nitroApp = useNitroApp()
-  const { handler, hooks = ['ferry:message'], executeHandlerOnRequest, when = true } = options
+  const { handler, hooks = ['wcferry:message'], executeHandlerOnRequest, when = true } = options
   const _hooks = Array.isArray(hooks) ? hooks : [hooks]
 
   _hooks.map((key) => {

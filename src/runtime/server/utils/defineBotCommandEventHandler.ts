@@ -23,7 +23,7 @@ export const defineBotCommandEventHandler = (options: BotCommandEventHandlerOpti
       ? new RegExp(`@.*?\\s(${command})(?:\\s([\\S\\s]*))?`)
       : command
   return defineBotEventHandler({
-    hooks: 'ferry:message:room:mention',
+    hooks: 'wcferry:message:room:mention',
     when: regex,
     executeHandlerOnRequest: false,
     handler(msg) {

@@ -1,17 +1,10 @@
-import { FerryAgent } from 'wechaty-puppet-ferry'
-import { useBotApi } from './useBotApi'
+import { AgentWcferry } from 'wechaty-puppet-wcferry'
 
-let agent: FerryAgent
+let agent: AgentWcferry
 
 export function useBotAgent() {
-  const api = useBotApi()
   if (!agent) {
-    agent = new FerryAgent({
-      server: {
-        disabled: true,
-      },
-      api,
-    })
+    agent = new AgentWcferry()
   }
 
   return agent

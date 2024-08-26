@@ -22,10 +22,10 @@ importers:
         version: 5.5.3
       wechaty:
         specifier: ^1.20.2
-        version: 1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)
-      wechaty-puppet-ferry:
-        specifier: ^0.0.1
-        version: 0.0.1(ioredis@5.4.1)(rxjs@7.8.1)
+        version: 1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)
+      wechaty-puppet-wcferry:
+        specifier: ^0.1.1
+        version: 0.1.1(ioredis@5.4.1)(rxjs@7.8.1)
     devDependencies:
       '@nuxt/devtools':
         specifier: ^1.3.14
@@ -1474,6 +1474,40 @@ packages:
   '@rushstack/eslint-patch@1.10.4':
     resolution: {integrity: sha512-WJgX9nzTqknM393q1QJDJmoW28kUfEnybeTfVNcNAPnIx210RXm2DiXiHzfNPJNIUUb1tJnz/l4QGtJ30PgWmA==}
 
+  '@rustup/nng-darwin-arm64@0.1.2':
+    resolution: {integrity: sha512-l12FqjYgdgLsdUj9ckBJCEIJyfB57bSk1Y8fhLQvy9ThYm2Ptn8Rg7bEB6lxpLPFiYwjMZ9qJewaaTzHmF+eqQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@rustup/nng-darwin-universal@0.1.2':
+    resolution: {integrity: sha512-hWPGZymav3ST8aLX62+VNGEtWxBRrQDVrwjVaqBWd4CmlqztRpsBId2P73ZsQ+ncQQGf1n0SNuJqSHKVMDuccQ==}
+    engines: {node: '>= 10'}
+    os: [darwin]
+
+  '@rustup/nng-darwin-x64@0.1.2':
+    resolution: {integrity: sha512-RvchyP+Ux6OS9NNM38QRaGbcYTH3n9jLwq5w43nR8Uc6uk4eG/5iDA3XRPyhP2DMt18J2Q1ioW/QNglyiUiyXQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rustup/nng-linux-x64-gnu@0.1.2':
+    resolution: {integrity: sha512-HMMYOqhMKj9/Sc0x7E7MRLBvXCq3mAQtj//a1qoqtUaoHXZcUb3WI+D2CS5wBc4a8tPjUZ/m1A9nREiMlQw/zQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@rustup/nng-win32-x64-msvc@0.1.2':
+    resolution: {integrity: sha512-w8AwLM1IOaCX5vgPwkApHJPWSc5rGVFd+gLqRPyYr2S4dkZ9OshgMnuS3jvBH4QtXXv7GBQIFzvTe15d0xgWeA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@rustup/nng@0.1.2':
+    resolution: {integrity: sha512-cEt3r3r2JJic0G6QIM8qP9UbdYlhAiB36ZIArMzWvdH7wjDqFyi+d+JUas1FMa8eYUtHXZq0J9SbxtCvgGj/kQ==}
+    engines: {node: '>= 10'}
+
   '@sindresorhus/merge-streams@2.3.0':
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
@@ -1582,6 +1616,9 @@ packages:
 
   '@swc/counter@0.1.3':
     resolution: {integrity: sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==}
+
+  '@swc/helpers@0.5.12':
+    resolution: {integrity: sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==}
 
   '@swc/types@0.1.12':
     resolution: {integrity: sha512-wBJA+SdtkbFhHjTMYH+dEH1y4VpfGdAc2Kw/LK09i9bXd/K6j6PkDcFCEzb6iVfZMkPRrl/q0e3toqTAJdkIVA==}
@@ -1843,6 +1880,10 @@ packages:
 
   '@vue/shared@3.4.38':
     resolution: {integrity: sha512-q0xCiLkuWWQLzVrecPb0RMsNWyxICOjPrcrwxTUEHb1fsnvni4dcuyG7RT/Ie7VPTvnjzIaWzRMUBsrqNj/hhw==}
+
+  '@wcferry/core@https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1#path:packages/core':
+    resolution: {path: packages/core, tarball: https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1}
+    version: 0.1.6
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -5217,14 +5258,14 @@ packages:
     resolution: {integrity: sha512-oOXU62oDf8/LIg8wAqSoZogZ+NFSGIAJvYuTewR6x5Ia4iWjbfrlwy7NHjWGBLkKM2EpnxgOAjyxhAb1iMxTJg==}
     engines: {node: '>=16', npm: '>=7'}
 
-  wechaty-puppet-ferry@0.0.1:
-    resolution: {integrity: sha512-mmOqzZC1FEkJ5E9jQijkv7SPOfJnnAYT3jCbM8orLTXppKC7vwK5PhFMGN9XEMdskaBrUp9tQ5ojJdqqkhdoEg==}
-
   wechaty-puppet-service@1.19.9:
     resolution: {integrity: sha512-nmJmG67hhM0M2gzr+yXDw8HIGn0BBB1p8b9+Fw7D0ENP7olMRuBPW7ST+Qs0WXJjd4X2+uoAsdCErs3L5d5JzA==}
     engines: {node: '>=16', npm: '>=7'}
     peerDependencies:
       wechaty-puppet: ^1.19.1
+
+  wechaty-puppet-wcferry@0.1.1:
+    resolution: {integrity: sha512-QKg3AKLGmeNf04kCM7XD/dPiDxdaVxLXGY4BfASudYGBWXdzgjr+xd9i7DWcmg6W4M2WRRsb8ROvC7j7qPfDGg==, tarball: https://registry.npmjs.org/wechaty-puppet-wcferry/-/wechaty-puppet-wcferry-0.1.1.tgz}
 
   wechaty-puppet-wechat4u@1.14.14:
     resolution: {integrity: sha512-KuJxwu9HrZ/al+ZduBP9As3wHM11urhNZr3tT5AmngVdq04KaGfufrMDdAfnRgGbFz1WMjQ6BfzObyM6qYBZ0w==}
@@ -6840,6 +6881,31 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.4': {}
 
+  '@rustup/nng-darwin-arm64@0.1.2':
+    optional: true
+
+  '@rustup/nng-darwin-universal@0.1.2':
+    optional: true
+
+  '@rustup/nng-darwin-x64@0.1.2':
+    optional: true
+
+  '@rustup/nng-linux-x64-gnu@0.1.2':
+    optional: true
+
+  '@rustup/nng-win32-x64-msvc@0.1.2':
+    optional: true
+
+  '@rustup/nng@0.1.2':
+    dependencies:
+      typescript: 5.5.4
+    optionalDependencies:
+      '@rustup/nng-darwin-arm64': 0.1.2
+      '@rustup/nng-darwin-universal': 0.1.2
+      '@rustup/nng-darwin-x64': 0.1.2
+      '@rustup/nng-linux-x64-gnu': 0.1.2
+      '@rustup/nng-win32-x64-msvc': 0.1.2
+
   '@sindresorhus/merge-streams@2.3.0': {}
 
   '@stylistic/eslint-plugin-js@2.6.4(eslint@9.9.1(jiti@1.21.6))':
@@ -6917,7 +6983,7 @@ snapshots:
   '@swc/core-win32-x64-msvc@1.7.18':
     optional: true
 
-  '@swc/core@1.7.18':
+  '@swc/core@1.7.18(@swc/helpers@0.5.12)':
     dependencies:
       '@swc/counter': 0.1.3
       '@swc/types': 0.1.12
@@ -6932,8 +6998,13 @@ snapshots:
       '@swc/core-win32-arm64-msvc': 1.7.18
       '@swc/core-win32-ia32-msvc': 1.7.18
       '@swc/core-win32-x64-msvc': 1.7.18
+      '@swc/helpers': 0.5.12
 
   '@swc/counter@0.1.3': {}
+
+  '@swc/helpers@0.5.12':
+    dependencies:
+      tslib: 2.7.0
 
   '@swc/types@0.1.12':
     dependencies:
@@ -7332,6 +7403,16 @@ snapshots:
       vue: 3.4.38(typescript@5.5.4)
 
   '@vue/shared@3.4.38': {}
+
+  '@wcferry/core@https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1#path:packages/core':
+    dependencies:
+      '@rustup/nng': 0.1.2
+      '@swc/helpers': 0.5.12
+      debug: 4.3.6
+      google-protobuf: 3.21.4
+      mime: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
 
   abbrev@1.1.1: {}
 
@@ -11076,15 +11157,35 @@ snapshots:
       google-protobuf: 3.21.4
       stronger-typed-streams: 0.2.0
 
-  wechaty-puppet-ferry@0.0.1(ioredis@5.4.1)(rxjs@7.8.1):
+  wechaty-puppet-service@1.19.9(brolog@1.14.2)(redux@4.2.1)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)):
     dependencies:
+      clone-class: 1.1.3
+      ducks: 1.0.2(redux-observable@2.0.0(redux@4.2.1))(redux@4.2.1)
+      file-box: 1.5.5
+      flash-store: 1.3.5
+      gerror: 1.0.16
+      redux-observable: 2.0.0(redux@4.2.1)
+      rxjs: 7.8.1
+      semver: 7.6.3
+      stronger-typed-streams: 0.2.0
+      uuid: 8.3.2
+      wechaty-grpc: 1.5.2
+      wechaty-puppet: 1.20.2(rxjs@7.8.1)
+      wechaty-redux: 1.20.2(brolog@1.14.2)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1))
+      wechaty-token: 1.1.2
+    transitivePeerDependencies:
+      - brolog
+      - debug
+      - redux
+      - supports-color
+      - wechaty
+
+  wechaty-puppet-wcferry@0.1.1(ioredis@5.4.1)(rxjs@7.8.1):
+    dependencies:
+      '@wcferry/core': https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1#path:packages/core
       file-box: 1.4.15
-      fs-extra: 11.2.0
-      h3: 1.12.0
-      hookable: 5.5.3
       knex: 3.1.0
-      listhen: 1.7.2
-      ofetch: 1.3.4
+      mlly: 1.7.1
       protobufjs: 7.4.0
       unstorage: 1.10.2(ioredis@5.4.1)
       wechaty-puppet: 1.20.2(rxjs@7.8.1)
@@ -11115,33 +11216,10 @@ snapshots:
       - tedious
       - uWebSockets.js
 
-  wechaty-puppet-service@1.19.9(brolog@1.14.2)(redux@4.2.1)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)):
-    dependencies:
-      clone-class: 1.1.3
-      ducks: 1.0.2(redux-observable@2.0.0(redux@4.2.1))(redux@4.2.1)
-      file-box: 1.5.5
-      flash-store: 1.3.5
-      gerror: 1.0.16
-      redux-observable: 2.0.0(redux@4.2.1)
-      rxjs: 7.8.1
-      semver: 7.6.3
-      stronger-typed-streams: 0.2.0
-      uuid: 8.3.2
-      wechaty-grpc: 1.5.2
-      wechaty-puppet: 1.20.2(rxjs@7.8.1)
-      wechaty-redux: 1.20.2(brolog@1.14.2)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1))
-      wechaty-token: 1.1.2
-    transitivePeerDependencies:
-      - brolog
-      - debug
-      - redux
-      - supports-color
-      - wechaty
-
-  wechaty-puppet-wechat4u@1.14.14(@swc/core@1.7.18)(wechaty-puppet@1.20.2(rxjs@7.8.1)):
+  wechaty-puppet-wechat4u@1.14.14(@swc/core@1.7.18(@swc/helpers@0.5.12))(wechaty-puppet@1.20.2(rxjs@7.8.1)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
-      '@swc/core': 1.7.18
+      '@swc/core': 1.7.18(@swc/helpers@0.5.12)
       fast-xml-parser: 3.21.1
       promise-retry: 2.0.1
       wechat4u: 0.7.14
@@ -11168,7 +11246,7 @@ snapshots:
       - debug
       - rxjs
 
-  wechaty-redux@1.20.2(brolog@1.14.2)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)):
+  wechaty-redux@1.20.2(brolog@1.14.2)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)):
     dependencies:
       ducks: 1.0.2(redux-observable@2.0.0(redux@4.2.1))(redux@4.2.1)
       gerror: 1.0.16
@@ -11180,7 +11258,7 @@ snapshots:
       typesafe-actions: 5.1.0
       utility-types: 3.11.0
       uuid: 8.3.2
-      wechaty: 1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)
+      wechaty: 1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)
       wechaty-puppet: 1.20.2(rxjs@7.8.1)
     transitivePeerDependencies:
       - brolog
@@ -11194,7 +11272,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  wechaty@1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1):
+  wechaty@1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1):
     dependencies:
       clone-class: 1.1.3
       cmd-ts: 0.10.2
@@ -11212,8 +11290,8 @@ snapshots:
       state-switch: 1.7.1(brolog@1.14.2)(gerror@1.0.16)(rxjs@7.8.1)
       uuid: 8.3.2
       wechaty-puppet: 1.20.2(rxjs@7.8.1)
-      wechaty-puppet-service: 1.19.9(brolog@1.14.2)(redux@4.2.1)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18)(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1))
-      wechaty-puppet-wechat4u: 1.14.14(@swc/core@1.7.18)(wechaty-puppet@1.20.2(rxjs@7.8.1))
+      wechaty-puppet-service: 1.19.9(brolog@1.14.2)(redux@4.2.1)(wechaty-puppet@1.20.2(rxjs@7.8.1))(wechaty@1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1))
+      wechaty-puppet-wechat4u: 1.14.14(@swc/core@1.7.18(@swc/helpers@0.5.12))(wechaty-puppet@1.20.2(rxjs@7.8.1))
       wechaty-token: 1.1.2
       ws: 8.18.0
     transitivePeerDependencies:

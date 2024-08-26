@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "nuxt-ferry-playground",
+  "name": "nuxt-wcferry-playground",
   "type": "module",
   "scripts": {
     "dev": "nuxi dev",

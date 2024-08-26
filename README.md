@@ -1,4 +1,4 @@
-# Nuxt Ferry
+# Nuxt Wcferry
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -8,9 +8,8 @@
 
 适用于 Nuxt 的微信机器人框架，使用如下开源项目强力驱动：
 
-- [🤖 wcf-client-rust](https://github.com/lich0821/wcf-client-rust)
-- [⚙️ nuxt-ferry](https://github.com/mrrhq/nuxt-ferry)
-- [🦾 Wechaty](https://wechaty.js.org/)
+- [🦾 wechaty-puppet-wcferry](https://github.com/mrrhq/wechaty-puppet-wcferry)
+- [🤖 Wechaty](https://wechaty.js.org/)
 
 ## Features
 
@@ -19,14 +18,15 @@
 - ⛰ 享用 Nuxt 的所有特性
 - 🚠 定义路由就是机器人的技能
 - 🌲 可编程的 Nitro Corn Task
-- 🦾 无需关心回调
+- 🦾 内置 DLL，无需关心回调
+- 💻 基于 wcferry 的 PC Hook
 
 ## Quick Setup
 
 Install:
 
 ```bash
-pnpx nuxi module add nuxt-ferry
+pnpx nuxi module add nuxt-wcferry
 ```
 
 Command:
@@ -44,6 +44,7 @@ export default defineBotCommandEventHandler({
   },
 });
 ```
+
 Message:
 
 ```ts
@@ -70,7 +71,7 @@ Tasks:
 export default defineCronTask({
   pattern: "0 23 * * *",
   run({ message }) {
-    useBot().say('hi!')
+    useBot().say("hi!");
   },
 });
 ```
@@ -118,13 +119,13 @@ npm run release
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-ferry?style=flat&colorA=080f12&colorB=1fa669
-[npm-version-href]: https://npmjs.com/package/nuxt-ferry
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-ferry?style=flat&colorA=080f12&colorB=1fa669
-[npm-downloads-href]: https://npmjs.com/package/nuxt-ferry
-[bundle-src]: https://img.shields.io/bundlephobia/minzip/nuxt-ferry?style=flat&colorA=080f12&colorB=1fa669&label=minzip
-[bundle-href]: https://bundlephobia.com/result?p=nuxt-ferry
-[license-src]: https://img.shields.io/github/license/mrrhq/nuxt-ferry.svg?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/mrrhq/nuxt-ferry/blob/main/LICENSE
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-wcferry?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmjs.com/package/nuxt-wcferry
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-wcferry?style=flat&colorA=080f12&colorB=1fa669
+[npm-downloads-href]: https://npmjs.com/package/nuxt-wcferry
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/nuxt-wcferry?style=flat&colorA=080f12&colorB=1fa669&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=nuxt-wcferry
+[license-src]: https://img.shields.io/github/license/mrrhq/nuxt-wcferry.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/mrrhq/nuxt-wcferry/blob/main/LICENSE
 [jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
-[jsdocs-href]: https://www.jsdocs.io/package/nuxt-ferry
+[jsdocs-href]: https://www.jsdocs.io/package/nuxt-wcferry

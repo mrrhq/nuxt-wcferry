@@ -1,35 +1,32 @@
 import type { Message } from 'wechaty'
 import type { WechatyInterface } from 'wechaty/impls'
-import type { PuppetFerry, WcfRustApi } from 'wechaty-puppet-ferry'
-import { useBotApi } from '../utils/useBotApi'
+import type { PuppetWcferry } from 'wechaty-puppet-wcferry'
 import { useBotPuppet } from '../utils/useBotPuppet'
 import { useBot } from '../utils/useBot'
 
 export default defineNitroPlugin(async (nitroApp) => {
-  const api = useBotApi()
   const puppet = useBotPuppet()
   const bot = useBot()
   await bot.start()
   bot.on('ready', () => {
     bot.on('message', async (msg) => {
-      nitroApp.hooks.callHook('ferry:message', msg)
+      nitroApp.hooks.callHook('wcferry:message', msg)
       const room = msg.room()
       if (room) {
-        nitroApp.hooks.callHook('ferry:message:room', msg)
+        nitroApp.hooks.callHook('wcferry:message:room', msg)
         if (await msg.mentionSelf()) {
-          nitroApp.hooks.callHook('ferry:message:room:mention', msg)
+          nitroApp.hooks.callHook('wcferry:message:room:mention', msg)
         }
       }
       else {
-        nitroApp.hooks.callHook('ferry:message:contact', msg)
+        nitroApp.hooks.callHook('wcferry:message:contact', msg)
       }
     })
   })
 
-  nitroApp.ferry = {
+  nitroApp.wcferry = {
     puppet,
     bot,
-    api,
   }
 
   nitroApp.hooks.hook('close', async () => {
@@ -39,17 +36,16 @@ export default defineNitroPlugin(async (nitroApp) => {
 
 declare module 'nitropack' {
   interface NitroApp {
-    ferry: {
-      api: WcfRustApi
+    wcferry: {
       bot: WechatyInterface
-      puppet: PuppetFerry
+      puppet: PuppetWcferry
     }
   }
 
   interface NitroRuntimeHooks {
-    'ferry:message': (msg: Message) => void
-    'ferry:message:room': (msg: Message) => void
-    'ferry:message:room:mention': (msg: Message) => void
-    'ferry:message:contact': (msg: Message) => void
+    'wcferry:message': (msg: Message) => void
+    'wcferry:message:room': (msg: Message) => void
+    'wcferry:message:room:mention': (msg: Message) => void
+    'wcferry:message:contact': (msg: Message) => void
   }
 }
