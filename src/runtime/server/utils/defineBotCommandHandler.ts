@@ -1,6 +1,6 @@
-import type { EventHandlerRequest, EventHandlerResponse, H3Event } from 'h3'
 import type { Message } from 'wechaty'
-import { defineBotMessageEventHandler } from './defineBotMessageEventHandler'
+import { defineBotMessageHandler } from './defineBotMessageHandler'
+import type { BotHandler } from './defineBotHandler'
 
 export interface CommandHandlerPayload {
   message: Message
@@ -8,22 +8,23 @@ export interface CommandHandlerPayload {
   args: string
 }
 
-export interface BotCommandEventHandlerOptions<Request extends EventHandlerRequest = EventHandlerRequest, Response = EventHandlerResponse> {
+export interface BotCommandHandlerOptions {
   command: string | RegExp
-  handler: (payload: CommandHandlerPayload, event?: H3Event<Request>) => Response
+  handler: (payload: CommandHandlerPayload) => unknown
+  middleware?: BotHandler<'message'> | string | (string | BotHandler<'message'>)[]
 }
 
 /**
  * 定义被 @ 时的命令
  */
-export const defineBotCommandEventHandler = (options: BotCommandEventHandlerOptions) => {
-  const { command, handler } = options
+export const defineBotCommandHandler = (options: BotCommandHandlerOptions) => {
+  const { command, handler, middleware } = options
   const regex
     = typeof command === 'string'
       ? new RegExp(`@.*?\\s(${command})(?:\\s([\\S\\s]*))?`)
       : command
-  return defineBotMessageEventHandler({
-    hooks: 'message:room:mention',
+  return defineBotMessageHandler({
+    hook: 'message:room:mention',
     when: regex,
     handler(msg) {
       if (!msg) return
@@ -36,5 +37,6 @@ export const defineBotCommandEventHandler = (options: BotCommandEventHandlerOpti
         args,
       })
     },
+    middleware,
   })
 }

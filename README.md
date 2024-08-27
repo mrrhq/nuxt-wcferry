@@ -16,10 +16,12 @@
 <!-- Highlight some of the features your module provide here -->
 
 - ⛰ 享用 Nuxt 的所有特性
-- 🚠 定义路由就是机器人的技能
+- 🛠️ 全自动导入机器人技能
+- 🔓 技能中间件和全局中间件
 - 🌲 可编程的 Nitro Corn Task
 - 🦾 内置 DLL，无需关心回调
 - 💻 基于 wcferry 的 PC Hook
+- 🔍 Wechaty API 可用
 
 ## Quick Setup
 
@@ -29,20 +31,62 @@ Install:
 pnpx nuxi module add nuxt-wcferry
 ```
 
-Command:
+Skills:
 
 ```ts
-// server/routes/*.ts
+// server/wcferry/skills/*.ts
 /**
  * 在群里说：@机器人 ping
  * 机器人回复：pong
  */
-export default defineBotCommandEventHandler({
+export default defineBotCommandHandler({
   command: "ping",
-  handler({ message }) {
+  handler({ message, _command, _args }) {
     message.say("pong");
   },
 });
+```
+
+Middleware:
+
+```ts
+// server/wcferry/middleware/*.ts
+export default defineBotMiddleware({
+  // 仅在 message 类事件中
+  hook: "message",
+  handler(message) {
+    console.log(message.talker().name());
+  },
+});
+```
+
+然后在技能定义中使用 `middleware: '<小驼峰中间件文件名>'`即可应用。不要返回任何值，返回任何值即意味着技能被拦截，将立即中断剩余中间件和技能的执行。
+
+还可以使用 `*.global.ts` 定义全局中间件，在所有技能执行前都会执行。
+
+Tasks:
+
+```ts
+export default defineCronTask({
+  pattern: "* * * * *",
+  async run() {
+    const bot = useBot();
+    console.log(`Hi, I am ${bot.currentUser.name()}, now is ${new Date()}`);
+    return {
+      result: true,
+    };
+  },
+});
+```
+
+Nitro 内置了 Task 功能，但不能在运行时编写定时任务，考虑到大多数机器人都会有定时任务，这个函数应该会有帮助。
+
+Wechaty 和 Wcferry:
+
+```ts
+const bot = useBot(); // Wechaty 实例
+const puppet = useBotPuppet(); // puppetWcferry 实例
+const agent = useBotAgent(); // WcferryAgent 实例
 ```
 
 That's it! You can now use Nuxt Ferry in your Nuxt app ✨

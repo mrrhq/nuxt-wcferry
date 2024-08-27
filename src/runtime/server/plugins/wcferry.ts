@@ -3,6 +3,7 @@ import type { PuppetWcferry } from 'wechaty-puppet-wcferry'
 import { useBotPuppet } from '../utils/useBotPuppet'
 import { useBot } from '../utils/useBot'
 import { defineNitroPlugin } from '#imports'
+import '#internal/wcferry/skills'
 
 export default defineNitroPlugin(async (nitroApp) => {
   const puppet = useBotPuppet()
@@ -21,9 +22,9 @@ export default defineNitroPlugin(async (nitroApp) => {
         bot.hooks.callHook('message:contact', msg)
       }
     })
-    bot.on('room-join', room => bot.hooks.callHook('room:join', room))
-    bot.on('room-leave', room => bot.hooks.callHook('room:leave', room))
-    bot.on('room-topic', room => bot.hooks.callHook('room:topic', room))
+    bot.on('room-join', room => (bot.hooks.callHook('room', room), bot.hooks.callHook('room:join', room)))
+    bot.on('room-leave', room => (bot.hooks.callHook('room', room), bot.hooks.callHook('room:leave', room)))
+    bot.on('room-topic', room => (bot.hooks.callHook('room', room), bot.hooks.callHook('room:topic', room)))
     bot.on('room-invite', room => bot.hooks.callHook('room:invite', room))
   })
   await bot.start()

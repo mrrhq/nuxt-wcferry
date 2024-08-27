@@ -10,6 +10,7 @@ export interface BotHooks {
   'message:room': (msg: Message) => void
   'message:room:mention': (msg: Message) => void
   'message:contact': (msg: Message) => void
+  'room': (room: RoomInterface) => void
   'room:join': (room: RoomInterface) => void
   'room:leave': (room: RoomInterface) => void
   'room:topic': (room: RoomInterface) => void
