@@ -45,37 +45,6 @@ export default defineBotCommandEventHandler({
 });
 ```
 
-Message:
-
-```ts
-// server/routes/*.ts
-/**
- * 私聊机器人
- * 机器人说：hi
- */
-export default defineBotEventHandler({
-  hooks: "ferry:message:contact",
-  handler({ message }) {
-    message.say("hi!");
-  },
-});
-```
-
-Tasks:
-
-```ts
-// server/tasks/*.ts
-/**
- * 每晚 11 点对自己说 hi!
- */
-export default defineCronTask({
-  pattern: "0 23 * * *",
-  run({ message }) {
-    useBot().say("hi!");
-  },
-});
-```
-
 That's it! You can now use Nuxt Ferry in your Nuxt app ✨
 
 ## Funding
@@ -115,7 +84,7 @@ npm run release
 
 ## License
 
-[MIT](./LICENSE) License © 2024-PRESENT [mrrhq](https://github.com/mrrhqmao)
+[MIT](./LICENSE) License © 2024-PRESENT [mrrhq](https://github.com/mrrhq)
 
 <!-- Badges -->
 
