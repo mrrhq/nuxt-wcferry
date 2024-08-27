@@ -1,0 +1,6 @@
+packages:
+  - playground
+  - docs
+  - client
+  - packages/*
+  - examples/*
