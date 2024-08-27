@@ -25,7 +25,7 @@ onDevtoolsClientConnected((client) => {
 </script>
 
 <template>
-  <Tabbar />
+  <NavBar />
   <div class="relative h-screen flex flex-col p-10 n-bg-base">
     <h1 class="text-3xl font-bold">
       Wcferry (TODO)
