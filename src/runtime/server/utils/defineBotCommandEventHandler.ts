@@ -1,6 +1,6 @@
 import type { EventHandlerRequest, EventHandlerResponse, H3Event } from 'h3'
 import type { Message } from 'wechaty'
-import { defineBotEventHandler } from './defineBotEventHandler'
+import { defineBotMessageEventHandler } from './defineBotMessageEventHandler'
 
 export interface CommandHandlerPayload {
   message: Message
@@ -22,10 +22,9 @@ export const defineBotCommandEventHandler = (options: BotCommandEventHandlerOpti
     = typeof command === 'string'
       ? new RegExp(`@.*?\\s(${command})(?:\\s([\\S\\s]*))?`)
       : command
-  return defineBotEventHandler({
-    hooks: 'wcferry:message:room:mention',
+  return defineBotMessageEventHandler({
+    hooks: 'message:room:mention',
     when: regex,
-    executeHandlerOnRequest: false,
     handler(msg) {
       if (!msg) return
       const text = msg.text()

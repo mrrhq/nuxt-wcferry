@@ -1,5 +1,6 @@
 import type { Task, TaskPayload, TaskContext } from 'nitropack/runtime'
 import { Cron } from 'croner'
+import { defineTask, useNitroApp } from '#imports'
 
 export interface CronTask<RT> extends Task<RT> {
   pattern?: string | Date
@@ -22,4 +23,6 @@ export function defineCronTask<RT = unknown>(def: CronTask<RT>) {
       cron.stop()
     })
   }
+
+  return task
 }

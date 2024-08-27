@@ -1,28 +1,32 @@
-import type { Message } from 'wechaty'
 import type { WechatyInterface } from 'wechaty/impls'
 import type { PuppetWcferry } from 'wechaty-puppet-wcferry'
 import { useBotPuppet } from '../utils/useBotPuppet'
 import { useBot } from '../utils/useBot'
+import { defineNitroPlugin } from '#imports'
 
 export default defineNitroPlugin(async (nitroApp) => {
   const puppet = useBotPuppet()
   const bot = useBot()
-  await bot.start()
   bot.on('ready', () => {
     bot.on('message', async (msg) => {
-      nitroApp.hooks.callHook('wcferry:message', msg)
+      bot.hooks.callHook('message', msg)
       const room = msg.room()
       if (room) {
-        nitroApp.hooks.callHook('wcferry:message:room', msg)
+        bot.hooks.callHook('message:room', msg)
         if (await msg.mentionSelf()) {
-          nitroApp.hooks.callHook('wcferry:message:room:mention', msg)
+          bot.hooks.callHook('message:room:mention', msg)
         }
       }
       else {
-        nitroApp.hooks.callHook('wcferry:message:contact', msg)
+        bot.hooks.callHook('message:contact', msg)
       }
     })
+    bot.on('room-join', room => bot.hooks.callHook('room:join', room))
+    bot.on('room-leave', room => bot.hooks.callHook('room:leave', room))
+    bot.on('room-topic', room => bot.hooks.callHook('room:topic', room))
+    bot.on('room-invite', room => bot.hooks.callHook('room:invite', room))
   })
+  await bot.start()
 
   nitroApp.wcferry = {
     puppet,
@@ -40,12 +44,5 @@ declare module 'nitropack' {
       bot: WechatyInterface
       puppet: PuppetWcferry
     }
-  }
-
-  interface NitroRuntimeHooks {
-    'wcferry:message': (msg: Message) => void
-    'wcferry:message:room': (msg: Message) => void
-    'wcferry:message:room:mention': (msg: Message) => void
-    'wcferry:message:contact': (msg: Message) => void
   }
 }

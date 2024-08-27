@@ -24,8 +24,8 @@ importers:
         specifier: ^1.20.2
         version: 1.20.2(@swc/core@1.7.18(@swc/helpers@0.5.12))(brolog@1.14.2)(redux@4.2.1)(rxjs@7.8.1)
       wechaty-puppet-wcferry:
-        specifier: ^0.1.1
-        version: 0.1.1(ioredis@5.4.1)(rxjs@7.8.1)
+        specifier: ^0.1.2
+        version: 0.1.2(ioredis@5.4.1)(rxjs@7.8.1)
     devDependencies:
       '@nuxt/devtools':
         specifier: ^1.3.14
@@ -1881,8 +1881,8 @@ packages:
   '@vue/shared@3.4.38':
     resolution: {integrity: sha512-q0xCiLkuWWQLzVrecPb0RMsNWyxICOjPrcrwxTUEHb1fsnvni4dcuyG7RT/Ie7VPTvnjzIaWzRMUBsrqNj/hhw==}
 
-  '@wcferry/core@https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1#path:packages/core':
-    resolution: {path: packages/core, tarball: https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1}
+  '@wcferry/core@git+https://git@github.com:kejunmao/node-wcferry.git#39ee99d8ed385f7de0ada3bb2791d499950c00d1&path:packages/core':
+    resolution: {commit: 39ee99d8ed385f7de0ada3bb2791d499950c00d1, path: packages/core, repo: git@github.com:kejunmao/node-wcferry.git, type: git}
     version: 0.1.6
 
   abbrev@1.1.1:
@@ -5264,8 +5264,8 @@ packages:
     peerDependencies:
       wechaty-puppet: ^1.19.1
 
-  wechaty-puppet-wcferry@0.1.1:
-    resolution: {integrity: sha512-QKg3AKLGmeNf04kCM7XD/dPiDxdaVxLXGY4BfASudYGBWXdzgjr+xd9i7DWcmg6W4M2WRRsb8ROvC7j7qPfDGg==, tarball: https://registry.npmjs.org/wechaty-puppet-wcferry/-/wechaty-puppet-wcferry-0.1.1.tgz}
+  wechaty-puppet-wcferry@0.1.2:
+    resolution: {integrity: sha512-IFyiqMqlFLCsLfnW6LxVfoT2MsX933i/j0/BjMVOwvualxzEYJufil1wgzHYp4GYxH1y0F3V8dsyq9p3X2d+hA==, tarball: https://registry.npmjs.org/wechaty-puppet-wcferry/-/wechaty-puppet-wcferry-0.1.2.tgz}
 
   wechaty-puppet-wechat4u@1.14.14:
     resolution: {integrity: sha512-KuJxwu9HrZ/al+ZduBP9As3wHM11urhNZr3tT5AmngVdq04KaGfufrMDdAfnRgGbFz1WMjQ6BfzObyM6qYBZ0w==}
@@ -7404,7 +7404,7 @@ snapshots:
 
   '@vue/shared@3.4.38': {}
 
-  '@wcferry/core@https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1#path:packages/core':
+  '@wcferry/core@git+https://git@github.com:kejunmao/node-wcferry.git#39ee99d8ed385f7de0ada3bb2791d499950c00d1&path:packages/core':
     dependencies:
       '@rustup/nng': 0.1.2
       '@swc/helpers': 0.5.12
@@ -11180,9 +11180,9 @@ snapshots:
       - supports-color
       - wechaty
 
-  wechaty-puppet-wcferry@0.1.1(ioredis@5.4.1)(rxjs@7.8.1):
+  wechaty-puppet-wcferry@0.1.2(ioredis@5.4.1)(rxjs@7.8.1):
     dependencies:
-      '@wcferry/core': https://codeload.github.com/kejunmao/node-wcferry/tar.gz/39ee99d8ed385f7de0ada3bb2791d499950c00d1#path:packages/core
+      '@wcferry/core': git+https://git@github.com:kejunmao/node-wcferry.git#39ee99d8ed385f7de0ada3bb2791d499950c00d1&path:packages/core
       file-box: 1.4.15
       knex: 3.1.0
       mlly: 1.7.1
