@@ -1,8 +1,7 @@
-import { basename, extname } from 'node:path'
 import { defineNuxtModule, createResolver, addServerScanDir, addServerHandler } from '@nuxt/kit'
 import { extendServerRpc, onDevToolsInitialized } from '@nuxt/devtools-kit'
-import { globby } from 'globby'
-import { join, relative, resolve } from 'pathe'
+import fb from 'fast-glob'
+import { join, relative, resolve, basename, extname } from 'pathe'
 import { camelCase } from 'scule'
 import type { ClientFunctions, ServerFunctions } from '../types'
 import { setupDevToolsUI } from './devtools'
@@ -14,7 +13,7 @@ async function scanDir(
   dir: string,
   name: string,
 ): Promise<FileInfo[]> {
-  const fileNames = await globby(join(name, GLOB_SCAN_PATTERN), {
+  const fileNames = await fb(join(name, GLOB_SCAN_PATTERN), {
     cwd: dir,
     dot: true,
     absolute: true,

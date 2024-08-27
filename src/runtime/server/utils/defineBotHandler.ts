@@ -34,8 +34,6 @@ export function defineBotHandler<H extends BotHooksKeys>(options: BotHandlerOpti
   const globalMiddleware = ($global as BotHandlerObject<H>[]).filter(v => hook.startsWith(v.hook!)).map(v => v.handler)
   const middleware = [...globalMiddleware, ...localMiddleware]
 
-  console.log(globalMiddleware)
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   bot.hooks.hook(hook, async (payload) => {
