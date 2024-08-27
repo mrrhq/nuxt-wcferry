@@ -2,6 +2,7 @@
 import type { EventHandlerRequest, EventHandlerResponse, H3Event } from 'h3'
 import type { BotHooks } from './useBot'
 import { useBot } from './useBot'
+import { createError, defineEventHandler } from '#imports'
 
 type PickMessageKeys<T> = {
   [K in keyof T]: K extends `message${string}` ? K : never;
