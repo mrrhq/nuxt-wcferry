@@ -22,10 +22,10 @@ export default defineNitroPlugin(async (nitroApp) => {
         bot.hooks.callHook('message:contact', msg)
       }
     })
-    bot.on('room-join', room => (bot.hooks.callHook('room', room), bot.hooks.callHook('room:join', room)))
-    bot.on('room-leave', room => (bot.hooks.callHook('room', room), bot.hooks.callHook('room:leave', room)))
-    bot.on('room-topic', room => (bot.hooks.callHook('room', room), bot.hooks.callHook('room:topic', room)))
-    bot.on('room-invite', room => bot.hooks.callHook('room:invite', room))
+    bot.on('room-join', (...args) => (bot.hooks.callHook('room', ...args), bot.hooks.callHook('room:join', ...args)))
+    bot.on('room-leave', (...args) => (bot.hooks.callHook('room', ...args), bot.hooks.callHook('room:leave', ...args)))
+    bot.on('room-topic', (...args) => (bot.hooks.callHook('room', ...args), bot.hooks.callHook('room:topic', ...args)))
+    bot.on('room-invite', (...args) => bot.hooks.callHook('room:invite', ...args))
   })
   await bot.start()
 

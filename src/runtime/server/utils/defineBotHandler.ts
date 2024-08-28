@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useBot, type BotHooks } from './useBot'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { $global, $local } from '#internal/wcferry/middleware'
 
@@ -14,7 +14,7 @@ export interface BotHandlerObject<H extends BotHooksKeys> {
    * 仅在满足条件时执行
    * @default true
    */
-  when?: RegExp | boolean | ((payload: Parameters<BotHooks[H]>[0]) => boolean | Promise<boolean>)
+  when?: RegExp | boolean | ((...args: Parameters<BotHooks[H]>) => boolean | Promise<boolean>)
 
   middleware?: BotHandler<H> | string | (string | BotHandler<H>)[]
 }
@@ -34,19 +34,22 @@ export function defineBotHandler<H extends BotHooksKeys>(options: BotHandlerOpti
   const globalMiddleware = ($global as BotHandlerObject<H>[]).filter(v => hook.startsWith(v.hook!)).map(v => v.handler)
   const middleware = [...globalMiddleware, ...localMiddleware]
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
-  bot.hooks.hook(hook, async (payload) => {
+  bot.hooks.hook(hook, async (...payload) => {
     for (const m of middleware) {
-      const result = await m(payload)
+      // @ts-expect-error
+      const result = await m(...payload)
       if (result !== undefined) {
         return result
       }
     }
-    const text = payload?.payload?.text || payload?.payload?.topic || ''
-    const shouldExecute = typeof when === 'function' ? await when(payload) : when === true || (when instanceof RegExp && when.test(text))
+    const [msg] = payload
+    const text = msg?.payload?.text || msg?.payload?.topic || ''
+    // @ts-expect-error
+    const shouldExecute = typeof when === 'function' ? await when(...payload) : when === true || (when instanceof RegExp && when.test(text))
     if (shouldExecute) {
-      return handler(payload)
+      // @ts-expect-error
+      return handler(...payload)
     }
   })
   return handler
