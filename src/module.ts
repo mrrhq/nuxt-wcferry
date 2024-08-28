@@ -47,19 +47,17 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.nitro ??= {}
     nuxt.options.nitro.experimental ??= {}
     nuxt.options.nitro.experimental.tasks = true
-
-    nuxt.options.watch.push(join(nuxt.options.serverDir!, 'wcferry'))
-
     nuxt.hook('nitro:init', async (nitro) => {
       const wcferryDirs = nitro.options.scanDirs.map(v => join(v, 'wcferry'))
-      // nitro.options.
-      const skills = (await Promise.all(wcferryDirs.map(dir => scanDir(dir, 'skills')))).flat()
+      nuxt.options.watch.push(...wcferryDirs)
+
       nitro.options.virtual['#internal/wcferry/skills'] = async () => {
+        const skills = (await Promise.all(wcferryDirs.map(dir => scanDir(dir, 'skills')))).flat()
         return skills.map(v => `import("${v.fullPath}");`).join('\n')
       }
 
-      const middleware = (await Promise.all(wcferryDirs.map(dir => scanDir(dir, 'middleware')))).flat()
       nitro.options.virtual['#internal/wcferry/middleware'] = async () => {
+        const middleware = (await Promise.all(wcferryDirs.map(dir => scanDir(dir, 'middleware')))).flat()
         let importCode = ''
         const globalMiddleware = []
         const localMiddleware = []
@@ -80,12 +78,11 @@ export default defineNuxtModule<ModuleOptions>({
         return importCode
       }
 
-      nuxt.options.watch.push(...wcferryDirs)
-
       nuxt.hook('builder:watch', (event, path) => {
-        if (event === 'add' || event === 'unlink') {
-          if (wcferryDirs.some(dir => resolve(nuxt.options.srcDir, path).startsWith(dir))) {
-            nitro.hooks.callHook('dev:reload')
+        if (event !== 'change') {
+          const fullPath = resolve(nuxt.options.srcDir, path)
+          if (wcferryDirs.some(dir => fullPath.startsWith(dir))) {
+            nitro.hooks.callHook('rollup:reload')
           }
         }
       })
