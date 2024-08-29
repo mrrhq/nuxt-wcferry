@@ -12,9 +12,13 @@ export default createConfigForNuxt({
   dirs: {
     src: [
       './playground',
+      './client',
+    ],
+    componentsPrefixed: [
+      './client/app/pages',
     ],
   },
 })
   .append(
-    // your custom flat config here...
+  // your custom flat config here...
   )
