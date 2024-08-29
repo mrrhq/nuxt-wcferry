@@ -1,9 +1,7 @@
-import { defineNuxtModule, createResolver, addServerScanDir, addServerHandler } from '@nuxt/kit'
-import { extendServerRpc, onDevToolsInitialized } from '@nuxt/devtools-kit'
+import { defineNuxtModule, createResolver, addServerScanDir } from '@nuxt/kit'
 import fb from 'fast-glob'
 import { join, relative, resolve, basename, extname } from 'pathe'
 import { camelCase } from 'scule'
-import type { ClientFunctions, ServerFunctions } from '../types'
 import { setupDevToolsUI } from './devtools'
 
 export const GLOB_SCAN_PATTERN = '**/*.{js,mjs,cjs,ts,mts,cts,tsx,jsx}'
@@ -89,19 +87,8 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     if (options.debug || nuxt.options.dev) {
-      addServerHandler({
-        route: '/__wcferry__/debug.json',
-        handler: resolver.resolve('./runtime/nitro/routes/__wcferry__/debug'),
-      })
+      addServerScanDir(resolver.resolve('./runtime/nitro'))
       setupDevToolsUI(options, resolver.resolve)
-      onDevToolsInitialized(() => {
-        const rpc = extendServerRpc<ClientFunctions, ServerFunctions>('custom-rpc', {
-          toUpperCase(t: string) {
-            rpc.broadcast.greeting('world')
-            return `${t.toUpperCase()} [from server]`
-          },
-        })
-      })
     }
   },
 })

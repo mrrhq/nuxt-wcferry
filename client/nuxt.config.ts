@@ -1,20 +1,28 @@
-import { resolve } from 'pathe'
+import { createResolver } from 'nuxt/kit'
 import DevtoolsUIKit from '@nuxt/devtools-ui-kit'
+
+const resolver = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
   ssr: false,
 
   modules: [
     DevtoolsUIKit,
+    '@unocss/nuxt',
+    'nuxt-monaco-editor',
   ],
 
   devtools: {
     enabled: false,
   },
 
+  future: {
+    compatibilityVersion: 4,
+  },
+
   nitro: {
     output: {
-      publicDir: resolve(__dirname, '../dist/client'),
+      publicDir: resolver.resolve(__dirname, '../dist/client'),
     },
   },
 
@@ -23,4 +31,6 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-08-27',
+
+  monacoEditor: { lang: 'zh-cn' },
 })
