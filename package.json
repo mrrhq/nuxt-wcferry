@@ -1,6 +1,6 @@
 {
   "name": "nuxt-wcferry",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "适用于 Nuxt 的微信机器人框架",
   "repository": "https://github.com/mrrhq/nuxt-wcferry",
   "license": "MIT",
