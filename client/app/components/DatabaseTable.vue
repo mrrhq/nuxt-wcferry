@@ -11,6 +11,7 @@ const colDefs = computed(() => {
     field: column,
   }))
 })
+
 const isDark = useDark()
 </script>
 

@@ -3,8 +3,13 @@ const route = useRoute()
 const terminals = [
   {
     name: 'Wcferry',
-    icon: 'i-carbon:message-queue',
+    icon: 'i-carbon-ibm-dynamic-route-server',
     to: '/',
+  },
+  {
+    name: '事件',
+    icon: 'i-carbon:webhook',
+    to: '/event',
   },
   {
     name: '数据库',

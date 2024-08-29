@@ -1,5 +1,5 @@
 <template>
   <div>
-    Nuxt Ferry playground!
+    Nuxt Wcferry playground!
   </div>
 </template>

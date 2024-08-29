@@ -1,7 +1,19 @@
-export interface ServerFunctions {
-  toUpperCase: (t: string) => string
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+import type { ServerFunctions as SF } from '@nuxt/devtools-kit/types'
+
+export interface ServerFunctions extends SF {
 }
 
 export interface ClientFunctions {
-  greeting: (t: string) => void
+}
+
+export interface ScannedWcferrySkill {
+  name: string
+  path: string
+  fullPath: string
+}
+declare module '@nuxt/devtools-kit/types' {
+  export interface ServerFunctions {
+    getServerSkills: () => ScannedWcferrySkill[]
+  }
 }
